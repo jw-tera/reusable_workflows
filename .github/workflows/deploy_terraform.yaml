@@ -18,6 +18,7 @@ on:
 
 jobs:
   deploy:
+    if: ${{ github.repository_owner == 'jw-tera'}}
     name: deploy
     runs-on: ubuntu-latest
 
