@@ -7,8 +7,9 @@ on:
         required: true
         type: string
       AWS_REGION:
-        required: true
+        required: false
         type: string
+        default: 'us-east-1'
 
     secrets:
       AWS_ACCESS_KEY_ID:
