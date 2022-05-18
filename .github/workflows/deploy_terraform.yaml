@@ -19,7 +19,7 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.repository_owner == 'jw-tera'}}
+    if: ${{ github.repository_owner == 'juanwigg'}}
     name: deploy
     runs-on: ubuntu-latest
 
