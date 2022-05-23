@@ -48,6 +48,7 @@ jobs:
 
 
   build_n_push:
+    needs: check_org
     name: Build and push Docker image to ECR
     runs-on: ubuntu-latest
 
