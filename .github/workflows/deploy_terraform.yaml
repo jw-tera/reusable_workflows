@@ -7,8 +7,9 @@ on:
         required: true
         type: string
       AWS_REGION:
-        required: true
+        required: false
         type: string
+        default: 'us-east-1'
 
     secrets:
       AWS_ACCESS_KEY_ID:
@@ -18,6 +19,7 @@ on:
 
 jobs:
   deploy:
+    if: ${{ github.repository_owner == 'juanwigg'}}
     name: deploy
     runs-on: ubuntu-latest
 
