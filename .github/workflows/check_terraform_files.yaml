@@ -1,0 +1,57 @@
+name: check_tf_files
+
+on:
+  workflow_call:
+    inputs:
+      tf_fmt:
+        required: false
+        default: false
+        type: boolean
+      checkov:
+        required: false
+        default: false
+        type: boolean
+      tfsec:
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+    check_org:
+      name: Check calling organization
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Check the calling organization
+          if: ${{ github.repository_owner != 'jw-tera' }}
+          uses: actions/github-script@v3
+          with:
+            script: |
+              core.setFailed('This reusable workflow can only be used by jw-tera.')
+
+    check_files:
+      needs: check_org
+      runs-on: ubuntu-latest
+      name: Do checks on the terraform files
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+          with:
+           fetch-depth: 0
+
+        - name: Check terraform format
+          if: ${{ inputs.tf_fmt }}
+          uses: dflook/terraform-fmt@v1
+          with:
+           path: .
+
+        - name: Do checkov check on files
+          if: ${{ inputs.checkov }}
+          uses: bridgecrewio/checkov-action@master
+          with:
+            framework: terraform
+            quiet: true
+
+        - name: Do TFSec check on files
+          if: ${{ inputs.tfsec }}
+          uses: aquasecurity/tfsec-action@v1.0.0
