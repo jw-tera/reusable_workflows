@@ -82,8 +82,8 @@ jobs:
 
       - name: Terragrunt Plan
         run: terragrunt run-all plan --terragrunt-non-interactive --terragrunt-source-update --terragrunt-include-external-dependencies -no-color
-        working-directory: ${{ github.workspace }}/main/terraform/environments/${{ inputs.PATH }}/
+        working-directory: ${{ github.workspace }}/main/terraform/environment/${{ inputs.PATH }}/
 
       - name: Terragrunt Apply
         run: terragrunt run-all apply --terragrunt-non-interactive --terragrunt-include-external-dependencies -no-color
-        working-directory: ${{ github.workspace }}/main/terraform/environments/${{ inputs.PATH }}/
+        working-directory: ${{ github.workspace }}/main/terraform/environment/${{ inputs.PATH }}/
