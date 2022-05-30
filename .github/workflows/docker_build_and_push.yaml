@@ -78,6 +78,7 @@ jobs:
             --file Dockerfile \
             --tag $ECR_REGISTRY/$ECR_REPOSITORY:${{ inputs.IMAGE_TAG }}
           docker tag \
-            $ECR_REGISTRY/$ECR_REPOSITORY:${{ inputs.IMAGE_TAG }} \
+            $ECR_REGISTRY/$ECR_REPOSITORY:${{ inputs.IMAGE_TAG }}\
             $ECR_REGISTRY/$ECR_REPOSITORY:${{ inputs.LATEST_TAG }}
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ inputs.IMAGE_TAG }}
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ inputs.LATEST_TAG }}
