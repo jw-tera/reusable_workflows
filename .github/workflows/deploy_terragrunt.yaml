@@ -71,7 +71,7 @@ jobs:
       - name: Install Terragrunt
         uses: peter-murray/terragrunt-github-action@v1.0.0
         with:
-          terragrunt_version: 0.32.3
+          terragrunt_version: 0.37.1
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
